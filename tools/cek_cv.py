@@ -2,12 +2,12 @@
 # -*- coding: utf-8 -*-
 """
 tools/cek_cv.py
-Validator ringan untuk web-cv/.
+Validator ringan untuk docs/.
 
 Memeriksa:
-  1. Semua file yang wajib ada di web-cv/
+    1. Semua file yang wajib ada di docs/
   2. Semua id section yang dipakai di navbar ada di index.html
-  3. Semua gambar yang direferensikan ada di web-cv/assets/
+    3. Semua gambar yang direferensikan ada di docs/assets/
 """
 
 import os
@@ -22,15 +22,15 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='repla
 
 # Lokasi root proyek (satu level di atas tools/)
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-WEB_CV = os.path.join(ROOT, "web-cv")
+DOCS_DIR = os.path.join(ROOT, "docs")
 
 # File yang wajib ada
 REQUIRED_FILES = [
-    os.path.join(WEB_CV, "index.html"),
-    os.path.join(WEB_CV, "css", "style.css"),
-    os.path.join(WEB_CV, "js", "script.js"),
-    os.path.join(WEB_CV, "assets", "maulana-ibrahim.jpg"),
-    os.path.join(WEB_CV, "assets", "favicon.svg"),
+    os.path.join(DOCS_DIR, "index.html"),
+    os.path.join(DOCS_DIR, "css", "style.css"),
+    os.path.join(DOCS_DIR, "js", "script.js"),
+    os.path.join(DOCS_DIR, "assets", "maulana-ibrahim.jpg"),
+    os.path.join(DOCS_DIR, "assets", "favicon.svg"),
 ]
 
 # Id section yang seharusnya ada di HTML (dari link navbar)
@@ -64,7 +64,7 @@ def rel(path: str) -> str:
 
 
 def read_html() -> str:
-    index = os.path.join(WEB_CV, "index.html")
+    index = os.path.join(DOCS_DIR, "index.html")
     if not os.path.isfile(index):
         return ""
     with open(index, encoding="utf-8") as f:
@@ -133,8 +133,8 @@ def check_images(html: str) -> int:
             continue
 
         # Normalisasi path relatif
-        # Refs di HTML menggunakan path relatif terhadap web-cv/index.html
-        full = os.path.normpath(os.path.join(WEB_CV, ref.lstrip("/")))
+        # Refs di HTML menggunakan path relatif terhadap docs/index.html
+        full = os.path.normpath(os.path.join(DOCS_DIR, ref.lstrip("/")))
         if full in checked:
             continue
         checked.add(full)
@@ -157,7 +157,7 @@ def check_images(html: str) -> int:
 def main() -> None:
     print(f"\n{BOLD}{'='*52}")
     print("  CEK CV -- Maulana Ibrahim")
-    print(f"  Direktori: {rel(WEB_CV)}")
+    print(f"  Direktori: {rel(DOCS_DIR)}")
     print(f"{'='*52}{RESET}")
 
     html = read_html()

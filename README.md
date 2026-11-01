@@ -5,8 +5,7 @@ Website CV personal Maulana Ibrahim yang dibangun dengan dua versi:
 | Versi | Stack | Folder |
 |---|---|---|
 | **React** (Figma Make) | React 19, Vite 8, Tailwind CSS v4, TypeScript | `src/` |
-| **Vanilla Web** | HTML5, CSS3, JavaScript (ES2020+) | `web-cv/` |
-| **GitHub Pages** | HTML5, CSS3, JavaScript (ES2020+) | `docs/` |
+| **Website utama** | HTML5, CSS3, JavaScript (ES2020+) | `docs/` |
 
 🔗 **Live Demo (React):** [alarm-steel-06219396.figma.site](https://alarm-steel-06219396.figma.site/)
 📦 **Repository GitHub:** [Ibraamaulana/cv-maulana-ibrahim](https://github.com/Ibraamaulana/cv-maulana-ibrahim)
@@ -26,7 +25,7 @@ Website CV personal Maulana Ibrahim yang dibangun dengan dua versi:
 - **Tombol kembali ke atas** (floating, muncul setelah scroll 400 px)
 - **Foto grayscale** dengan efek warna saat hover
 - **Aksesibilitas** — tag semantik, `aria-label`, `alt` text, dan `role` yang tepat
-- **Validator otomatis** (`tools/cek_cv.py`) — memeriksa struktur file sebelum deploy
+- **Validator otomatis** (`tools/cek_cv.py`) — memeriksa struktur file di `docs/` sebelum deploy
 
 ---
 
@@ -42,23 +41,14 @@ Responsive Personal CV Website/
 │   ├── favicon.svg
 │   └── maulana-ibrahim.jpg
 │
-├── web-cv/                   # ✅ Versi Vanilla (HTML/CSS/JS)
-│   ├── index.html            # Halaman utama
-│   ├── css/
-│   │   └── style.css         # Seluruh gaya (CSS variables, flex, grid)
-│   ├── js/
-│   │   └── script.js         # Interaktivitas (tema, menu, reveal, dll.)
-│   └── assets/
-│       ├── favicon.svg
-│       └── maulana-ibrahim.jpg
-├── docs/                     # Salinan statis, sumber GitHub Pages (branch main)
+├── docs/                     # Website utama HTML/CSS/JS dan sumber GitHub Pages
 │   ├── index.html
-│   ├── css/
-│   ├── js/
+│   ├── css/style.css
+│   ├── js/script.js
 │   └── assets/
 │
 ├── tools/
-│   └── cek_cv.py             # Validator Python untuk web-cv/
+│   └── cek_cv.py             # Validator Python untuk docs/
 │
 ├── README.md
 ├── package.json
@@ -71,16 +61,16 @@ Responsive Personal CV Website/
 
 ### Versi Vanilla (tanpa build tool)
 
-1. Buka folder `web-cv/`
+1. Buka folder `docs/`
 2. Buka `index.html` langsung di browser — **tidak perlu server**
 
    ```
-   web-cv/index.html  →  klik dua kali atau drag ke browser
+   docs/index.html  →  klik dua kali atau drag ke browser
    ```
 
    > Atau jalankan server lokal sederhana (opsional, untuk font Google Fonts):
    > ```bash
-   > python -m http.server 8000 --directory web-cv
+   > python -m http.server 8000 --directory docs
    > # lalu buka http://localhost:8000
    > ```
 
@@ -91,7 +81,7 @@ pnpm install
 pnpm dev       # http://localhost:8443
 ```
 
-GitHub Pages disiapkan untuk menerbitkan versi HTML statis dari branch `main`, folder `/docs`.
+GitHub Pages menerbitkan website HTML statis dari branch `main`, folder `/docs`.
 
 ---
 
