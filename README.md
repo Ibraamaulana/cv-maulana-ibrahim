@@ -9,6 +9,8 @@ Website CV personal Maulana Ibrahim yang dibangun dengan dua versi:
 | **GitHub Pages** | HTML5, CSS3, JavaScript (ES2020+) | `docs/` |
 
 🔗 **Live Demo (React):** [alarm-steel-06219396.figma.site](https://alarm-steel-06219396.figma.site/)
+📦 **Repository GitHub:** [Ibraamaulana/cv-maulana-ibrahim](https://github.com/Ibraamaulana/cv-maulana-ibrahim)
+🌐 **Website GitHub Pages:** [ibraamaulana.github.io/cv-maulana-ibrahim](https://ibraamaulana.github.io/cv-maulana-ibrahim/)
 
 ---
 
