@@ -882,6 +882,7 @@ svg { flex-shrink: 0; }
 .contact-fields { display: grid; gap: 1rem; }
 .contact-field textarea { min-height: 8rem; resize: vertical; }
 .field-error { display: block; min-height: 1rem; margin-top: 0.3rem; color: #ff9a8b; font-size: 0.72rem; }
+[data-theme="light"] .contact-field .field-error { color: #b42318; }
 .contact-field [aria-invalid="true"] { border-color: #e87361; }
 .contact-form-status { min-height: 1.2rem; color: var(--text-label); font-size: 0.8rem; }
 .contact-form-status:empty { display: none; }
