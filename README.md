@@ -19,6 +19,9 @@ Website CV personal Maulana Ibrahim. Versi utama yang dinilai adalah website HTM
 - **Responsif** — tampil optimal di HP (≥320 px) hingga desktop lebar
 - **Tema gelap/terang** dengan tombol toggle dan simpan ke `localStorage`
 - **Menu hamburger** untuk navigasi mobile yang mulus
+- **Filter keterampilan** berdasarkan nama skill secara langsung
+- **Form kontak tervalidasi** yang menyiapkan email melalui aplikasi email pengguna
+- **Counter ringkasan** untuk jumlah skill, sertifikat, dan prestasi yang tercantum
 - **Animasi scroll** (`IntersectionObserver`) — elemen muncul saat masuk layar
 - **Navbar aktif** — link berubah warna sesuai section yang sedang dilihat
 - **Smooth scroll** untuk semua anchor link
@@ -96,10 +99,17 @@ Jalankan skrip Python untuk memastikan semua file dan section ID ada:
 python tools/cek_cv.py
 ```
 
+Untuk memeriksa tautan/asset lokal dan melihat ukuran byte per bahasa:
+
+```bash
+python tools/cek_cv.py --report-sizes
+```
+
 Output akan menampilkan status OK / GAGAL untuk setiap pemeriksaan:
 - File wajib (`index.html`, `style.css`, `script.js`, aset gambar)
 - Semua `id` section yang dipakai navbar
-- Semua gambar yang direferensikan di HTML
+- Semua tautan anchor dan resource lokal yang direferensikan di HTML
+- Ukuran dan persentase HTML, CSS, JavaScript, dan Python
 
 ---
 

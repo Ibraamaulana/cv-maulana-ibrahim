@@ -132,6 +132,20 @@
               Unduh CV
             </a>
           </div>
+          <div class="hero-stats" aria-label="Ringkasan portofolio">
+            <div class="hero-stat">
+              <strong data-counter="10">10</strong>
+              <span>Keterampilan</span>
+            </div>
+            <div class="hero-stat">
+              <strong data-counter="3">3</strong>
+              <span>Sertifikat</span>
+            </div>
+            <div class="hero-stat">
+              <strong data-counter="1">1</strong>
+              <span>Prestasi</span>
+            </div>
+          </div>
         </div>
 
         <!-- Portrait column -->
@@ -232,6 +246,13 @@
           <div class="eyebrow"><span></span>03 / Keterampilan</div>
           <h2>Perangkat untuk bertumbuh.</h2>
           <p>Kombinasi kemampuan teknis dan pola pikir yang mendukung pekerjaan berbasis data.</p>
+        </div>
+
+        <div class="skill-filter reveal">
+          <label for="skill-search">Cari keterampilan</label>
+          <input id="skill-search" type="search" placeholder="Contoh: Python atau analitis" autocomplete="off">
+          <p id="skill-filter-status" role="status" aria-live="polite">10 keterampilan tersedia.</p>
+          <p id="skill-filter-empty" hidden>Tidak ada keterampilan yang cocok.</p>
         </div>
 
         <div class="skills-grid">
@@ -405,6 +426,28 @@
               <div>
                 <small>Lokasi</small>
                 Kota Probolinggo
+
+            <form id="contact-form" class="contact-form" novalidate>
+              <div class="contact-fields">
+                <div class="contact-field">
+                  <label for="contact-name">Nama</label>
+                  <input id="contact-name" name="name" type="text" autocomplete="name" maxlength="80" required aria-describedby="contact-name-error" aria-invalid="false">
+                  <small id="contact-name-error" class="field-error"></small>
+                </div>
+                <div class="contact-field">
+                  <label for="contact-email">Email</label>
+                  <input id="contact-email" name="email" type="email" autocomplete="email" maxlength="160" required aria-describedby="contact-email-error" aria-invalid="false">
+                  <small id="contact-email-error" class="field-error"></small>
+                </div>
+                <div class="contact-field contact-field--message">
+                  <label for="contact-message">Pesan</label>
+                  <textarea id="contact-message" name="message" rows="5" minlength="20" maxlength="1200" required aria-describedby="contact-message-error" aria-invalid="false"></textarea>
+                  <small id="contact-message-error" class="field-error"></small>
+                </div>
+              </div>
+              <button type="submit" class="button-primary">Siapkan email</button>
+              <p id="contact-form-status" class="contact-form-status" role="status" aria-live="polite"></p>
+            </form>
               </div>
             </div>
 

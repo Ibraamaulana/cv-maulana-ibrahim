@@ -135,7 +135,137 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 
 /* ───────────────────────────────────────────
-   5. SCROLL-REVEAL  (IntersectionObserver)
+   5. SKILL FILTER
+─────────────────────────────────────────── */
+(function initSkillFilter() {
+  const input = document.getElementById('skill-search');
+  const cards = document.querySelectorAll('#keterampilan .skill-card');
+  const status = document.getElementById('skill-filter-status');
+  const emptyMessage = document.getElementById('skill-filter-empty');
+
+  if (!input || !cards.length || !status || !emptyMessage) return;
+
+  const chips = [...document.querySelectorAll('#keterampilan .skill-chip')];
+
+  function filterSkills() {
+    const query = input.value.trim().toLowerCase();
+    let visibleCount = 0;
+
+    cards.forEach(card => {
+      let cardMatches = 0;
+      card.querySelectorAll('.skill-chip').forEach(chip => {
+        const matches = chip.textContent.trim().toLowerCase().includes(query);
+        chip.hidden = !matches;
+        if (matches) cardMatches += 1;
+      });
+      card.hidden = query !== '' && cardMatches === 0;
+      visibleCount += cardMatches;
+    });
+
+    status.textContent = query
+      ? `${visibleCount} dari ${chips.length} keterampilan cocok.`
+      : `${chips.length} keterampilan tersedia.`;
+    emptyMessage.hidden = visibleCount > 0;
+  }
+
+  input.addEventListener('input', filterSkills);
+})();
+
+
+/* ───────────────────────────────────────────
+   6. CONTACT FORM VALIDATION
+─────────────────────────────────────────── */
+(function initContactForm() {
+  const form = document.getElementById('contact-form');
+  const status = document.getElementById('contact-form-status');
+  const fields = [
+    document.getElementById('contact-name'),
+    document.getElementById('contact-email'),
+    document.getElementById('contact-message'),
+  ];
+
+  if (!form || !status || fields.some(field => !field)) return;
+
+  function validateField(field) {
+    const value = field.value.trim();
+    let message = '';
+
+    if (!value) message = 'Kolom ini wajib diisi.';
+    else if (field.type === 'email' && !field.validity.valid) message = 'Masukkan alamat email yang valid.';
+    else if (field.id === 'contact-message' && value.length < 20) message = 'Pesan minimal 20 karakter.';
+
+    field.setAttribute('aria-invalid', String(Boolean(message)));
+    document.getElementById(`${field.id}-error`).textContent = message;
+    return message === '';
+  }
+
+  fields.forEach(field => {
+    field.addEventListener('input', () => {
+      if (field.getAttribute('aria-invalid') === 'true') validateField(field);
+    });
+  });
+
+  form.addEventListener('submit', event => {
+    event.preventDefault();
+    const invalidFields = fields.filter(field => !validateField(field));
+
+    if (invalidFields.length) {
+      status.textContent = 'Periksa kembali nama, email, dan pesan sebelum melanjutkan.';
+      invalidFields[0].focus();
+      return;
+    }
+
+    const [name, email, message] = fields.map(field => field.value.trim());
+    const subject = encodeURIComponent(`Pesan CV dari ${name}`);
+    const body = encodeURIComponent(`Nama: ${name}\nEmail: ${email}\n\n${message}`);
+    status.textContent = 'Aplikasi email akan dibuka untuk mengirim pesan.';
+    window.location.href = `mailto:mi7908368@gmail.com?subject=${subject}&body=${body}`;
+  });
+})();
+
+
+/* ───────────────────────────────────────────
+   7. PORTFOLIO COUNTERS
+─────────────────────────────────────────── */
+(function initCounters() {
+  const counters = document.querySelectorAll('[data-counter]');
+  if (!counters.length) return;
+
+  function showFinalValues() {
+    counters.forEach(counter => {
+      counter.textContent = counter.dataset.counter;
+    });
+  }
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
+    showFinalValues();
+    return;
+  }
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const counter = entry.target;
+      const target = Number(counter.dataset.counter);
+      const start = performance.now();
+
+      function animate(now) {
+        const progress = Math.min((now - start) / 900, 1);
+        counter.textContent = String(Math.floor(target * progress));
+        if (progress < 1) requestAnimationFrame(animate);
+      }
+
+      requestAnimationFrame(animate);
+      observer.unobserve(counter);
+    });
+  }, { threshold: 0.8 });
+
+  counters.forEach(counter => observer.observe(counter));
+})();
+
+
+/* ───────────────────────────────────────────
+   8. SCROLL-REVEAL  (IntersectionObserver)
 ─────────────────────────────────────────── */
 (function initReveal() {
   const revealEls = document.querySelectorAll('.reveal');
@@ -158,7 +288,7 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 
 /* ───────────────────────────────────────────
-   6. SMOOTH SCROLL  (for same-page anchors)
+  9. SMOOTH SCROLL  (for same-page anchors)
 ─────────────────────────────────────────── */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
@@ -176,7 +306,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 
 /* ───────────────────────────────────────────
-   7. FLOATING BACK-TO-TOP BUTTON
+  10. FLOATING BACK-TO-TOP BUTTON
 ─────────────────────────────────────────── */
 (function initScrollTop() {
   const btn = document.getElementById('scroll-top');
@@ -202,7 +332,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 
 /* ───────────────────────────────────────────
-   8. HEADER: add shadow on scroll
+  11. HEADER: add shadow on scroll
 ─────────────────────────────────────────── */
 (function initHeaderShadow() {
   const header = document.getElementById('site-header');

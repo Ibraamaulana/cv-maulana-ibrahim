@@ -387,6 +387,18 @@ svg { flex-shrink: 0; }
   margin-top: 2rem;
 }
 
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  border-top: 1px solid var(--border);
+  padding-top: 1.25rem;
+}
+.hero-stat { display: grid; gap: 0.25rem; text-align: center; }
+.hero-stat strong { color: var(--text); font-size: 1.25rem; font-weight: 600; }
+.hero-stat span { color: var(--text-label); font-size: 0.68rem; }
+
 /* Portrait */
 .hero-portrait {
   position: relative;
@@ -633,6 +645,31 @@ svg { flex-shrink: 0; }
   margin-top: 3.5rem;
 }
 
+.skill-filter { max-width: 28rem; margin-top: 2rem; }
+.skill-filter label, .contact-field label {
+  display: block;
+  margin-bottom: 0.45rem;
+  color: var(--text-label);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.skill-filter input, .contact-field input, .contact-field textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.8rem 0.9rem;
+  background: var(--bg-card);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.875rem;
+}
+.skill-filter input:focus-visible, .contact-field input:focus-visible, .contact-field textarea:focus-visible {
+  outline: 2px solid var(--accent-light);
+  outline-offset: 2px;
+}
+.skill-filter-status, .skill-filter-empty { margin-top: 0.5rem; color: var(--text-label); font-size: 0.75rem; }
+.skill-chip[hidden], .skill-card[hidden], .skill-filter-empty[hidden] { display: none; }
+
 .skill-card {
   position: relative;
   min-height: 21rem;
@@ -835,6 +872,20 @@ svg { flex-shrink: 0; }
 
 .contact-links { display: grid; gap: 0.75rem; }
 
+.contact-form {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-column: 1 / -1;
+  gap: 1rem;
+}
+.contact-fields { display: grid; gap: 1rem; }
+.contact-field textarea { min-height: 8rem; resize: vertical; }
+.field-error { display: block; min-height: 1rem; margin-top: 0.3rem; color: #ff9a8b; font-size: 0.72rem; }
+.contact-field [aria-invalid="true"] { border-color: #e87361; }
+.contact-form-status { min-height: 1.2rem; color: var(--text-label); font-size: 0.8rem; }
+.contact-form-status:empty { display: none; }
+
 .contact-link {
   display: flex;
   align-items: center;
@@ -979,6 +1030,7 @@ a.contact-link:hover {
   .achievement-card { padding: 3.5rem; }
   .contact-panel { padding: 3rem; }
   .hero-actions { flex-direction: row; justify-content: center; }
+  .hero-stats { justify-content: center; }
   .footer-inner { flex-direction: row; justify-content: space-between; text-align: left; }
 }
 
@@ -998,6 +1050,8 @@ a.contact-link:hover {
 
   .skills-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
   .certs-grid  { grid-template-columns: 1fr 1fr; }
+  .contact-fields { grid-template-columns: 1fr 1fr; }
+  .contact-field--message { grid-column: 1 / -1; }
 
   .contact-panel {
     grid-template-columns: 0.9fr 1.1fr;
@@ -1022,6 +1076,7 @@ a.contact-link:hover {
   .hero-portrait { order: 2; max-width: 30rem; }
   .hero-desc  { margin-inline: 0; }
   .hero-actions { justify-content: flex-start; }
+  .hero-stats { justify-content: flex-start; }
 
   .grid-sidebar {
     grid-template-columns: 0.7fr 1.3fr;
