@@ -1,0 +1,10 @@
+{
+  "description": "Showcase your qualifications with a sleek, responsive CV website designed for aspiring Data Specialists, featuring a modern layout and easy navigation.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
