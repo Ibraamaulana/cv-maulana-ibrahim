@@ -151,3 +151,4 @@ docs/**/*.jpg        -filter -diff -merge -text
 prototype-figma-make/** linguist-generated
 *.md linguist-documentation
 pnpm-lock.yaml linguist-generated
+docs/** -linguist-documentation
