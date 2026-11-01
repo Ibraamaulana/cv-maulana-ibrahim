@@ -1,10 +1,10 @@
 # Maulana Ibrahim — Personal CV Website
 
-Website CV personal Maulana Ibrahim yang dibangun dengan dua versi:
+Website CV personal Maulana Ibrahim. Versi utama yang dinilai adalah website HTML/CSS/JavaScript murni di `docs/`.
 
 | Versi | Stack | Folder |
 |---|---|---|
-| **React** (Figma Make) | React 19, Vite 8, Tailwind CSS v4, TypeScript | `src/` |
+| **Prototipe Figma Make** | React 19, Vite 8, Tailwind CSS v4, TypeScript | `prototype-figma-make/` |
 | **Website utama** | HTML5, CSS3, JavaScript (ES2020+) | `docs/` |
 
 🔗 **Live Demo (React):** [alarm-steel-06219396.figma.site](https://alarm-steel-06219396.figma.site/)
@@ -33,33 +33,31 @@ Website CV personal Maulana Ibrahim yang dibangun dengan dua versi:
 
 ```
 Responsive Personal CV Website/
-├── src/                      # Versi React (Figma Make)
-│   ├── App.tsx
-│   ├── index.css
-│   └── main.tsx
-├── public/
-│   ├── favicon.svg
-│   └── maulana-ibrahim.jpg
-│
 ├── docs/                     # Website utama HTML/CSS/JS dan sumber GitHub Pages
 │   ├── index.html
 │   ├── css/style.css
 │   ├── js/script.js
 │   └── assets/
-│
 ├── tools/
 │   └── cek_cv.py             # Validator Python untuk docs/
-│
+├── prototype-figma-make/     # Draf awal Figma Make, bukan versi utama yang dinilai
+│   ├── src/
+│   ├── public/
+│   ├── .figma/make/site.json
+│   ├── package.json
+│   ├── pnpm-lock.yaml
+│   ├── vite.config.ts
+│   └── AGENTS.md, CLAUDE.md, .mise.toml, tsconfig.json
 ├── README.md
-├── package.json
-└── vite.config.ts
+├── .gitattributes
+└── .gitignore
 ```
 
 ---
 
 ## 🚀 Cara Menjalankan
 
-### Versi Vanilla (tanpa build tool)
+### Website utama (tanpa build tool)
 
 1. Buka folder `docs/`
 2. Buka `index.html` langsung di browser — **tidak perlu server**
@@ -74,14 +72,19 @@ Responsive Personal CV Website/
    > # lalu buka http://localhost:8000
    > ```
 
-### Versi React (Figma Make / Vite)
+### Menjalankan prototipe Figma Make (React / Vite)
 
 ```bash
+cd prototype-figma-make
 pnpm install
 pnpm dev       # http://localhost:8443
 ```
 
 GitHub Pages menerbitkan website HTML statis dari branch `main`, folder `/docs`.
+
+## Prototipe Figma Make
+
+Folder `prototype-figma-make/` berisi draf awal yang dihasilkan dengan Figma Make. Folder ini dipertahankan sebagai prototipe; versi utama yang dinilai adalah HTML/CSS/JavaScript murni di `docs/`.
 
 ---
 
@@ -109,7 +112,7 @@ Output akan menampilkan status OK / GAGAL untuk setiap pemeriksaan:
 | Interaktivitas | JavaScript ES2020+ (vanilla, tanpa library) |
 | Validasi | Python 3 (stdlib only) |
 | Font | Google Fonts — Inter |
-| React versi | React 19, Vite 8, Tailwind CSS v4 |
+| Prototipe Figma Make | React 19, Vite 8, Tailwind CSS v4, TypeScript |
 
 ---
 

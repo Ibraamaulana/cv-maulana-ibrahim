@@ -147,3 +147,7 @@
 
 # GitHub Pages serves static assets directly; keep the site photo as a regular blob.
 docs/**/*.jpg        -filter -diff -merge -text
+
+prototype-figma-make/** linguist-generated
+*.md linguist-documentation
+pnpm-lock.yaml linguist-generated

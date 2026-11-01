@@ -20,6 +20,5 @@ logs/
 /.plugins/
 /.opencode-skills/
 
-# Figma Make local helpers; site.json remains tracked for the Vite config.
+# Figma Make local helpers from the editing environment.
 /.figma/make/**
-!/.figma/make/site.json
